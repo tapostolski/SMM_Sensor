@@ -7,7 +7,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 // SENSOR ID
-const int sensorId = 10;
+const int sensorId = ;
 
 // WIFI CONFIGURATION
 const char* ssid = "";
