@@ -20,7 +20,7 @@ const char* authPassword = "";
 
 // TIMING
 unsigned long lastDataSend = 0;
-const unsigned long sendInterval = 1 * 60 * 60 * 1000; //1 hour
+const unsigned long sendInterval = 15 * 60 * 1000; //15 minutes
 ////////////////////////////////////////////////////////////////////////////////
 
 // PINS
