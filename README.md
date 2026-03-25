@@ -13,7 +13,7 @@ Proces instalacji przebiega następująco:
 4.1. SENSOR ID - ID sensora, każdy sensor powinien mieć unikalne ID
 4.2. WIFI CONFIGURATION - dane dotyczące połączenia wifi oraz adres ip serwera z zainstalowaną aplikacją backendową
 4.3. BASIC AUTH DATA - dane logowania ustawiane na serwerze
-4.4. TIMING - sendInterval definiuje czas pomiędzy kolejnymi pomiarami i transmisją danych, domyślnie jest ustawiona 1 godzina
+4.4. TIMING - sendInterval definiuje czas pomiędzy kolejnymi pomiarami i transmisją danych, domyślnie ustawione jest 15 minut.
 4.5. PINS - przypisanie pinów
 4.6. LED - konfiguracja diody RGB, NUMPIXELS oznacza ilość diod, LED_BRIGHTNESS oznacza jasność diody (0 - 255)
 5. Po zakończonej konfiguracji można wgrać kod za pomocą przycisku **Wgraj** z ikoną strzałki (->)
@@ -33,7 +33,7 @@ Installation steps:
 4.1 SENSOR ID – unique ID for each sensor
 4.2 WIFI CONFIGURATION – WiFi credentials and server IP address
 4.3 BASIC AUTH DATA – server login credentials
-4.4 TIMING – sendInterval sets time between data transmissions (default: 1 hour)
+4.4 TIMING – sendInterval sets time between data transmissions (default: 15 minutes)
 4.5 PINS – pin assignments
 4.6 LED – NUMPIXELS (number of LEDs), LED_BRIGHTNESS (0–255)
 5. Upload the code using the Upload button (→ icon)   
