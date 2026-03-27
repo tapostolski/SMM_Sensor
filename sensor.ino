@@ -5,14 +5,14 @@
 #include <Adafruit_NeoPixel.h>
 #include <SparkFun_MAX1704x_Fuel_Gauge_Arduino_Library.h>
 
-////////////////////////////////////////////////////////////////////////////////
+/////////// CONFIGURATION ///////////
 // SENSOR ID
 const int sensorId = ;
 
 // WIFI CONFIGURATION
 const char* ssid = "";
 const char* password = ";
-  const String serverUrl = "";
+const String serverUrl = "";
 
 // BASIC AUTH DATA
 const char* authUsername = "";
@@ -20,8 +20,7 @@ const char* authPassword = "";
 
 // TIMING
 unsigned long lastDataSend = 0;
-const unsigned long sendInterval = 15 * 60 * 1000; //15 minutes
-////////////////////////////////////////////////////////////////////////////////
+const unsigned long sendInterval = 15 * 60 * 1000; //15 mins
 
 // PINS
 const int sensorPin = A0;
@@ -32,6 +31,11 @@ const int ledPin = D6;
 #define NUMPIXELS 1
 #define LED_BRIGHTNESS 64
 Adafruit_NeoPixel pixels(NUMPIXELS, ledPin, NEO_GRB + NEO_KHZ800);
+
+// CALIBRATION
+const int dryValue = 280;
+const int wetValue = 800;
+/////////// CONFIGURATION ///////////
 
 // BATTERY
 SFE_MAX1704X lipo;
@@ -55,9 +59,13 @@ void setup() {
 
   Wire.begin(D2, D1);
 
-  lipo.begin();
-  lipo.quickStart();
-  lipo.setThreshold(20);
+  if (!lipo.begin()) {
+    Serial.println("MAX17043 NIE WYKRYTY!");
+  } else {
+    lipo.quickStart();
+    lipo.setThreshold(20);
+    Serial.println("MAX17043 OK");
+  }
 
   connectToWiFi();
 }
@@ -144,7 +152,7 @@ void setLEDColor(int r, int g, int b) {
 void sendMoistureData() {
 
   int rawValue = analogRead(sensorPin);
-  int moisture = map(rawValue, 800, 280, 0, 100);
+  int moisture = map(rawValue, dryValue, wetValue, 0, 100);
   moisture = constrain(moisture, 0, 100);
 
   WiFiClient client;
